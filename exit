@@ -1,0 +1,623 @@
+[33mcommit 73481c416f4e3085b581d2420960f7145a11bf78[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: reynaldiRepo <reynald.gresik@gmail.com>
+Date:   Sat Aug 17 15:45:30 2019 +0700
+
+    first commit to git
+
+ application.zip                                    |   Bin [31m0[m -> [32m34235002[m bytes
+ application/.htaccess                              |     6 [32m+[m
+ application/cache/index.html                       |    11 [32m+[m
+ application/config/autoload.php                    |   135 [32m+[m
+ application/config/config.php                      |   523 [32m+[m
+ application/config/constants.php                   |    87 [32m+[m
+ application/config/database.php                    |    96 [32m+[m
+ application/config/doctypes.php                    |    24 [32m+[m
+ application/config/foreign_chars.php               |   103 [32m+[m
+ application/config/hooks.php                       |    13 [32m+[m
+ application/config/index.html                      |    11 [32m+[m
+ application/config/memcached.php                   |    19 [32m+[m
+ application/config/migration.php                   |    84 [32m+[m
+ application/config/mimes.php                       |   184 [32m+[m
+ application/config/profiler.php                    |    14 [32m+[m
+ application/config/routes.php                      |     6 [32m+[m
+ application/config/smileys.php                     |    64 [32m+[m
+ application/config/user_agents.php                 |   215 [32m+[m
+ application/controllers/Home.php                   |   724 [32m++[m
+ application/controllers/index.html                 |    11 [32m+[m
+ application/core/index.html                        |    11 [32m+[m
+ application/helpers/index.html                     |    11 [32m+[m
+ application/hooks/index.html                       |    11 [32m+[m
+ application/index.html                             |    11 [32m+[m
+ application/language/english/index.html            |    11 [32m+[m
+ application/language/index.html                    |    11 [32m+[m
+ application/libraries/index.html                   |    11 [32m+[m
+ application/logs/index.html                        |    11 [32m+[m
+ application/models/CeoDashboard_m.php              |   438 [32m+[m
+ application/models/CeoRegist_m.php                 |    37 [32m+[m
+ application/models/Ec_m.php                        |   108 [32m+[m
+ application/models/Hsfc_m.php                      |    15 [32m+[m
+ application/models/index.html                      |    11 [32m+[m
+ application/third_party/index.html                 |    11 [32m+[m
+ application/views/DashboardCEO/Informasi_akun.php  |   385 [32m+[m
+ application/views/DashboardCEO/anggota1_rekap.php  |   353 [32m+[m
+ application/views/DashboardCEO/anggota1_save.php   |   381 [32m+[m
+ application/views/DashboardCEO/anggota2_rekap.php  |   353 [32m+[m
+ application/views/DashboardCEO/anggota2_save.php   |   381 [32m+[m
+ application/views/DashboardCEO/dashboard.php       |   440 [32m+[m
+ application/views/DashboardCEO/dashboard_cbt.php   |   363 [32m+[m
+ application/views/DashboardCEO/data_header.php     |   171 [32m+[m
+ application/views/DashboardCEO/index.html          |    11 [32m+[m
+ application/views/DashboardCEO/ketua_rekap.php     |   353 [32m+[m
+ application/views/DashboardCEO/ketua_save.php      |   381 [32m+[m
+ .../views/DashboardCEO/upload_pembayaran.php       |   359 [32m+[m
+ application/views/ceo.php                          |   661 [32m+[m
+ application/views/ceo_login.php                    |   136 [32m+[m
+ application/views/ceo_regist.php                   |   170 [32m+[m
+ application/views/ec.php                           |   489 [32m+[m
+ application/views/ec_regist.php                    |   365 [32m+[m
+ application/views/ec_success.php                   |   122 [32m+[m
+ application/views/errors/cli/error_404.php         |     8 [32m+[m
+ application/views/errors/cli/error_db.php          |     8 [32m+[m
+ application/views/errors/cli/error_exception.php   |    21 [32m+[m
+ application/views/errors/cli/error_general.php     |     8 [32m+[m
+ application/views/errors/cli/error_php.php         |    21 [32m+[m
+ application/views/errors/cli/index.html            |    11 [32m+[m
+ application/views/errors/html/error_404.php        |    64 [32m+[m
+ application/views/errors/html/error_db.php         |    64 [32m+[m
+ application/views/errors/html/error_exception.php  |    32 [32m+[m
+ application/views/errors/html/error_general.php    |    64 [32m+[m
+ application/views/errors/html/error_php.php        |    33 [32m+[m
+ application/views/errors/html/index.html           |    11 [32m+[m
+ application/views/errors/index.html                |    11 [32m+[m
+ application/views/home.php                         |   345 [32m+[m
+ application/views/hsfc.php                         |   432 [32m+[m
+ application/views/hsfc_coming_soon.php             |   150 [32m+[m
+ application/views/index.html                       |    11 [32m+[m
+ assets/CEO/Dashboard/css/animate.css               |  3273 [32m+++++[m
+ .../Dashboard/css/animation/animation-custom.css   |    14 [32m+[m
+ .../css/bootstrap-select/bootstrap-select.css      |   293 [32m+[m
+ assets/CEO/Dashboard/css/bootstrap.min.css         |  8299 [32m++++++++++++[m
+ assets/CEO/Dashboard/css/c3/c3.min.css             |     1 [32m+[m
+ assets/CEO/Dashboard/css/chosen/chosen-sprite.png  |   Bin [31m0[m -> [32m538[m bytes
+ assets/CEO/Dashboard/css/chosen/chosen.css         |   447 [32m+[m
+ assets/CEO/Dashboard/css/code-editor/1.jpg         |   Bin [31m0[m -> [32m7080[m bytes
+ assets/CEO/Dashboard/css/code-editor/ambiance.css  |    98 [32m+[m
+ .../CEO/Dashboard/css/code-editor/codemirror.css   |   309 [32m+[m
+ .../CEO/Dashboard/css/color-picker/farbtastic.css  |    50 [32m+[m
+ assets/CEO/Dashboard/css/color-picker/marker.png   |   Bin [31m0[m -> [32m652[m bytes
+ assets/CEO/Dashboard/css/color-picker/mask.png     |   Bin [31m0[m -> [32m2020[m bytes
+ assets/CEO/Dashboard/css/color-picker/wheel.png    |   Bin [31m0[m -> [32m11733[m bytes
+ assets/CEO/Dashboard/css/cropper/cropper.min.css   |     9 [32m+[m
+ .../CEO/Dashboard/css/datapicker/datepicker3.css   |   789 [32m++[m
+ assets/CEO/Dashboard/css/dialog/dialog.css         |    58 [32m+[m
+ .../CEO/Dashboard/css/dialog/sweetalert2.min.css   |     1 [32m+[m
+ assets/CEO/Dashboard/css/dropzone/dropzone.css     |   414 [32m+[m
+ assets/CEO/Dashboard/css/font-awesome.min.css      |  2722 [32m++++[m
+ assets/CEO/Dashboard/css/jquery.dataTables.min.css |     1 [32m+[m
+ .../css/jvectormap/jquery-jvectormap-2.0.3.css     |   135 [32m+[m
+ assets/CEO/Dashboard/css/main.css                  |   280 [32m+[m
+ assets/CEO/Dashboard/css/meanmenu/meanmenu.min.css |    89 [32m+[m
+ .../Dashboard/css/metisMenu/metisMenu-vertical.css |    81 [32m+[m
+ .../CEO/Dashboard/css/metisMenu/metisMenu.min.css  |    10 [32m+[m
+ assets/CEO/Dashboard/css/normalize.css             |   424 [32m+[m
+ .../Dashboard/css/notification/notification.css    |   141 [32m+[m
+ assets/CEO/Dashboard/css/notika-custom-icon.css    |   212 [32m+[m
+ assets/CEO/Dashboard/css/owl.carousel.css          |    71 [32m+[m
+ assets/CEO/Dashboard/css/owl.theme.css             |    79 [32m+[m
+ assets/CEO/Dashboard/css/owl.transitions.css       |   163 [32m+[m
+ assets/CEO/Dashboard/css/responsive.css            |   688 [32m+[m
+ .../css/scrollbar/jquery.mCustomScrollbar.min.css  |     1 [32m+[m
+ assets/CEO/Dashboard/css/summernote/summernote.css |     1 [32m+[m
+ assets/CEO/Dashboard/css/themesaller-forms.css     |  1959 [32m+++[m
+ assets/CEO/Dashboard/css/wave/button.css           |   212 [32m+[m
+ assets/CEO/Dashboard/css/wave/waves.min.css        |     7 [32m+[m
+ assets/CEO/Dashboard/fonts/FontAwesome.otf         |   Bin [31m0[m -> [32m109688[m bytes
+ assets/CEO/Dashboard/fonts/fontawesome-webfont.eot |   Bin [31m0[m -> [32m70807[m bytes
+ assets/CEO/Dashboard/fonts/fontawesome-webfont.svg |   655 [32m+[m
+ assets/CEO/Dashboard/fonts/fontawesome-webfont.ttf |   Bin [31m0[m -> [32m142072[m bytes
+ .../CEO/Dashboard/fonts/fontawesome-webfont.woff   |   Bin [31m0[m -> [32m83588[m bytes
+ .../CEO/Dashboard/fonts/fontawesome-webfont.woff2  |   Bin [31m0[m -> [32m66624[m bytes
+ .../fonts/glyphicons-halflings-regular.eot         |   Bin [31m0[m -> [32m20127[m bytes
+ .../fonts/glyphicons-halflings-regular.svg         |   288 [32m+[m
+ .../fonts/glyphicons-halflings-regular.ttf         |   Bin [31m0[m -> [32m45404[m bytes
+ .../fonts/glyphicons-halflings-regular.woff        |   Bin [31m0[m -> [32m23424[m bytes
+ .../fonts/glyphicons-halflings-regular.woff2       |   Bin [31m0[m -> [32m18028[m bytes
+ assets/CEO/Dashboard/fonts/notika-icon.eot         |   Bin [31m0[m -> [32m24260[m bytes
+ assets/CEO/Dashboard/fonts/notika-icon.svg         |    72 [32m+[m
+ assets/CEO/Dashboard/fonts/notika-icon.ttf         |   Bin [31m0[m -> [32m24080[m bytes
+ assets/CEO/Dashboard/fonts/notika-icon.woff        |   Bin [31m0[m -> [32m24156[m bytes
+ assets/CEO/Dashboard/images/select.png             |   Bin [31m0[m -> [32m128[m bytes
+ assets/CEO/Dashboard/images/sort_asc.png           |   Bin [31m0[m -> [32m1081[m bytes
+ assets/CEO/Dashboard/images/sort_asc_disabled.png  |   Bin [31m0[m -> [32m148[m bytes
+ assets/CEO/Dashboard/images/sort_both.png          |   Bin [31m0[m -> [32m201[m bytes
+ assets/CEO/Dashboard/images/sort_desc.png          |   Bin [31m0[m -> [32m1083[m bytes
+ assets/CEO/Dashboard/images/sort_desc_disabled.png |   Bin [31m0[m -> [32m146[m bytes
+ assets/CEO/Dashboard/img/image_upload.png          |   Bin [31m0[m -> [32m4943[m bytes
+ .../CEO/Dashboard/js/animation/animation-active.js |   328 [32m+[m
+ assets/CEO/Dashboard/js/autosize.min.js            |     6 [32m+[m
+ .../js/bootstrap-select/bootstrap-select.js        |  1888 [32m+++[m
+ assets/CEO/Dashboard/js/bootstrap.min.js           |     7 [32m+[m
+ assets/CEO/Dashboard/js/charts/Chart.js            | 12757 [32m+++++++++++++++++++[m
+ assets/CEO/Dashboard/js/charts/area-chart.js       |   186 [32m+[m
+ assets/CEO/Dashboard/js/charts/bar-chart.js        |   215 [32m+[m
+ assets/CEO/Dashboard/js/charts/line-chart.js       |   213 [32m+[m
+ assets/CEO/Dashboard/js/chat/jquery.chat.js        |    60 [32m+[m
+ assets/CEO/Dashboard/js/chat/moment.min.js         |     6 [32m+[m
+ assets/CEO/Dashboard/js/chosen/chosen.jquery.js    |  1257 [32m++[m
+ .../Dashboard/js/code-editor/code-editor-active.js |    15 [32m+[m
+ assets/CEO/Dashboard/js/code-editor/code-editor.js |   684 [32m+[m
+ assets/CEO/Dashboard/js/code-editor/codemirror.js  |  7830 [32m++++++++++++[m
+ .../CEO/Dashboard/js/color-picker/color-picker.js  |     9 [32m+[m
+ .../Dashboard/js/color-picker/farbtastic.min.js    |     1 [32m+[m
+ .../CEO/Dashboard/js/counterup/counterup-active.js |    11 [32m+[m
+ .../Dashboard/js/counterup/jquery.counterup.min.js |     8 [32m+[m
+ assets/CEO/Dashboard/js/counterup/waypoints.min.js |     8 [32m+[m
+ assets/CEO/Dashboard/js/cropper/cropper-actice.js  |    68 [32m+[m
+ assets/CEO/Dashboard/js/cropper/cropper.min.js     |     9 [32m+[m
+ assets/CEO/Dashboard/js/data-map/d3.min.js         |     5 [32m+[m
+ .../CEO/Dashboard/js/data-map/data-maps-active.js  |    90 [32m+[m
+ .../CEO/Dashboard/js/data-map/datamaps.all.min.js  |     3 [32m+[m
+ assets/CEO/Dashboard/js/data-map/topojson.js       |   534 [32m+[m
+ .../CEO/Dashboard/js/data-table/data-table-act.js  |     8 [32m+[m
+ .../js/data-table/jquery.dataTables.min.js         |   166 [32m+[m
+ .../js/datapicker/bootstrap-datepicker.js          |  1671 [32m+++[m
+ .../Dashboard/js/datapicker/datepicker-active.js   |    43 [32m+[m
+ assets/CEO/Dashboard/js/dialog/dialog-active.js    |    73 [32m+[m
+ assets/CEO/Dashboard/js/dialog/sweetalert2.min.js  |     1 [32m+[m
+ assets/CEO/Dashboard/js/dropzone/dropzone.js       |  1767 [32m+++[m
+ .../js/easytopie/jquery.easypiechart.min.js        |     9 [32m+[m
+ .../CEO/Dashboard/js/easytopie/salvattore.min.js   |     7 [32m+[m
+ .../CEO/Dashboard/js/flot/analtic-flot-active.js   |   296 [32m+[m
+ assets/CEO/Dashboard/js/flot/chart-tooltips.js     |    19 [32m+[m
+ assets/CEO/Dashboard/js/flot/curvedLines.js        |   483 [32m+[m
+ assets/CEO/Dashboard/js/flot/flot-active.js        |   376 [32m+[m
+ .../Dashboard/js/flot/flot-widget-anatic-active.js |   252 [32m+[m
+ assets/CEO/Dashboard/js/flot/jquery.flot.js        |  3168 [32m+++++[m
+ .../CEO/Dashboard/js/flot/jquery.flot.orderBars.js |   187 [32m+[m
+ assets/CEO/Dashboard/js/flot/jquery.flot.pie.js    |   820 [32m++[m
+ assets/CEO/Dashboard/js/flot/jquery.flot.resize.js |    59 [32m+[m
+ assets/CEO/Dashboard/js/flot/jquery.flot.time.js   |   432 [32m+[m
+ .../Dashboard/js/flot/jquery.flot.tooltip.min.js   |    12 [32m+[m
+ .../Dashboard/js/google.maps/google.maps-active.js |    61 [32m+[m
+ .../js/google.maps/google.maps2-active.js          |    60 [32m+[m
+ assets/CEO/Dashboard/js/icheck/icheck-active.js    |    11 [32m+[m
+ assets/CEO/Dashboard/js/icheck/icheck.min.js       |    11 [32m+[m
+ assets/CEO/Dashboard/js/jasny-bootstrap.min.js     |     6 [32m+[m
+ assets/CEO/Dashboard/js/jquery-price-slider.js     |     6 [32m+[m
+ assets/CEO/Dashboard/js/jquery.scrollUp.min.js     |     7 [32m+[m
+ .../js/jvectormap/jquery-jvectormap-2.0.2.min.js   |  3328 [32m+++++[m
+ .../jvectormap/jquery-jvectormap-world-mill-en.js  |   481 [32m+[m
+ .../Dashboard/js/jvectormap/jvectormap-active.js   |    37 [32m+[m
+ assets/CEO/Dashboard/js/knob/jquery.appear.js      |   150 [32m+[m
+ assets/CEO/Dashboard/js/knob/jquery.knob.js        |   801 [32m++[m
+ assets/CEO/Dashboard/js/knob/knob-active.js        |    33 [32m+[m
+ assets/CEO/Dashboard/js/login/login-action.js      |    22 [32m+[m
+ assets/CEO/Dashboard/js/main.js                    |   146 [32m+[m
+ .../CEO/Dashboard/js/meanmenu/jquery.meanmenu.js   |   285 [32m+[m
+ .../CEO/Dashboard/js/metisMenu/metisMenu-active.js |     9 [32m+[m
+ assets/CEO/Dashboard/js/metisMenu/metisMenu.min.js |    11 [32m+[m
+ .../js/notification/bootstrap-growl.min.js         |     2 [32m+[m
+ .../js/notification/notification-active.js         |    62 [32m+[m
+ assets/CEO/Dashboard/js/owl.carousel.min.js        |    47 [32m+[m
+ assets/CEO/Dashboard/js/plugins.js                 |    24 [32m+[m
+ .../rangle-slider/jquery-ui-1.10.4.custom.min.js   |     7 [32m+[m
+ .../js/rangle-slider/jquery-ui-touch-punch.min.js  |    11 [32m+[m
+ .../Dashboard/js/rangle-slider/rangle-active.js    |   146 [32m+[m
+ .../jquery.mCustomScrollbar.concat.min.js          |     5 [32m+[m
+ .../Dashboard/js/sparkline/jquery.sparkline.min.js |     5 [32m+[m
+ .../CEO/Dashboard/js/sparkline/sparkline-active.js |    44 [32m+[m
+ .../Dashboard/js/summernote/summernote-active.js   |    21 [32m+[m
+ .../js/summernote/summernote-updated.min.js        |     3 [32m+[m
+ .../CEO/Dashboard/js/summernote/summernote.min.js  |     6 [32m+[m
+ assets/CEO/Dashboard/js/tawk-chat.js               |    13 [32m+[m
+ assets/CEO/Dashboard/js/todo/jquery.todo.js        |   168 [32m+[m
+ .../CEO/Dashboard/js/vendor/jquery-1.12.4.min.js   |     5 [32m+[m
+ .../CEO/Dashboard/js/vendor/modernizr-2.8.3.min.js |     4 [32m+[m
+ assets/CEO/Dashboard/js/wave/wave-active.js        |     6 [32m+[m
+ assets/CEO/Dashboard/js/wave/waves.min.js          |     2 [32m+[m
+ .../js/wizard/jquery.bootstrap.wizard.min.js       |    22 [32m+[m
+ assets/CEO/Dashboard/js/wizard/wizard-active.js    |    13 [32m+[m
+ assets/CEO/Dashboard/js/wow.min.js                 |     2 [32m+[m
+ assets/CEO/Dashboard/style.css                     |  4635 [32m+++++++[m
+ assets/CEO/assets/css/bootstrap.min.css            |  8335 [32m++++++++++++[m
+ assets/CEO/assets/css/demo.css                     |    22 [32m+[m
+ assets/CEO/assets/css/gsdk-bootstrap-wizard.css    |   970 [32m++[m
+ assets/CEO/assets/js/RegisterConfirm.js            |    13 [32m+[m
+ assets/CEO/assets/js/UploadImagePreview.js         |    12 [32m+[m
+ assets/CEO/assets/js/bootstrap.min.js              |   946 [32m++[m
+ assets/CEO/assets/js/gsdk-bootstrap-wizard.js      |   312 [32m+[m
+ assets/CEO/assets/js/jquery-1.10.2.js              |  9789 [32m++++++++++++++[m
+ assets/CEO/assets/js/jquery-2.2.4.min.js           |  3133 [32m+++++[m
+ assets/CEO/assets/js/jquery.bootstrap.wizard.js    |   285 [32m+[m
+ assets/CEO/assets/js/jquery.validate.min.js        |   558 [32m+[m
+ assets/CEO/assets/scss/gsdk-bootstrap-wizard.scss  |    31 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_buttons.scss       |   285 [32m+[m
+ .../assets/scss/gsdk-bootstrap-wizard/_card.scss   |     5 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_footers.scss       |    19 [32m+[m
+ .../assets/scss/gsdk-bootstrap-wizard/_inputs.scss |   105 [32m+[m
+ .../assets/scss/gsdk-bootstrap-wizard/_labels.scss |    68 [32m+[m
+ .../assets/scss/gsdk-bootstrap-wizard/_misc.scss   |   122 [32m+[m
+ .../assets/scss/gsdk-bootstrap-wizard/_mixins.scss |     1 [32m+[m
+ .../gsdk-bootstrap-wizard/_navs-pagination.scss    |    49 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_responsive.scss    |    18 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_tooltips.scss      |   120 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_typography.scss    |    54 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_variables.scss     |     8 [32m+[m
+ .../scss/gsdk-bootstrap-wizard/_wizard-card.scss   |   161 [32m+[m
+ .../mixins/_vendor-prefixes.scss                   |    20 [32m+[m
+ assets/CEO/css/styleCEOHOME.css                    |  1656 [32m+++[m
+ assets/CEO/img/Homepage/CEO.png                    |   Bin [31m0[m -> [32m184496[m bytes
+ assets/CEO/img/Homepage/CEO_BG_fix.png             |   Bin [31m0[m -> [32m822082[m bytes
+ assets/CEO/img/Homepage/Dashboard_Logo.png         |   Bin [31m0[m -> [32m22725[m bytes
+ assets/CEO/img/Homepage/Register1.jpg              |   Bin [31m0[m -> [32m309761[m bytes
+ assets/CEO/img/Homepage/ceo_bg_fix-01-01.png       |   Bin [31m0[m -> [32m748180[m bytes
+ assets/CEO/img/Homepage/chemication.png            |   Bin [31m0[m -> [32m47679[m bytes
+ assets/CEO/img/Homepage/pamflet.jpg                |   Bin [31m0[m -> [32m8065067[m bytes
+ assets/CEO/img/Homepage/register.jpg               |   Bin [31m0[m -> [32m241478[m bytes
+ assets/CEO/index.html                              |    11 [32m+[m
+ assets/EC/css/ec_style.1.css                       |  1656 [32m+++[m
+ assets/EC/img/EC_BG.png                            |   Bin [31m0[m -> [32m1339277[m bytes
+ assets/EC/img/pamflet.jpg                          |   Bin [31m0[m -> [32m1419131[m bytes
+ assets/EC/index.html                               |    11 [32m+[m
+ assets/HSFC/css/styleHSFCHOME.css                  |  1655 [32m+++[m
+ assets/HSFC/img/HsfcBg.png                         |   Bin [31m0[m -> [32m1913142[m bytes
+ assets/HSFC/img/Register.jpg                       |   Bin [31m0[m -> [32m239293[m bytes
+ assets/HSFC/index.html                             |    11 [32m+[m
+ assets/contactform/Readme.txt                      |     2 [32m+[m
+ assets/contactform/contactform.js                  |   118 [32m+[m
+ assets/contactform/index.html                      |    11 [32m+[m
+ assets/css/index.html                              |    11 [32m+[m
+ assets/css/scss-files.txt                          |     1 [32m+[m
+ assets/css/style.css                               |  1652 [32m+++[m
+ assets/img/Homepage/BG_Home_final.png              |   Bin [31m0[m -> [32m572413[m bytes
+ assets/img/Homepage/CEOBg_black-01.png             |   Bin [31m0[m -> [32m1428938[m bytes
+ assets/img/Homepage/Chemication.png                |   Bin [31m0[m -> [32m47679[m bytes
+ assets/img/Homepage/Gallery/1.1.jpg                |   Bin [31m0[m -> [32m86848[m bytes
+ assets/img/Homepage/Gallery/10.1.jpg               |   Bin [31m0[m -> [32m152851[m bytes
+ assets/img/Homepage/Gallery/11.1.jpg               |   Bin [31m0[m -> [32m149922[m bytes
+ assets/img/Homepage/Gallery/12.1.jpg               |   Bin [31m0[m -> [32m118203[m bytes
+ assets/img/Homepage/Gallery/2.1.jpg                |   Bin [31m0[m -> [32m117489[m bytes
+ assets/img/Homepage/Gallery/3.1.jpg                |   Bin [31m0[m -> [32m76431[m bytes
+ assets/img/Homepage/Gallery/4.1.jpg                |   Bin [31m0[m -> [32m95897[m bytes
+ assets/img/Homepage/Gallery/5.1.jpg                |   Bin [31m0[m -> [32m145333[m bytes
+ assets/img/Homepage/Gallery/6.1.jpg                |   Bin [31m0[m -> [32m148250[m bytes
+ assets/img/Homepage/Gallery/7.1.jpg                |   Bin [31m0[m -> [32m107052[m bytes
+ assets/img/Homepage/Gallery/8.1.jpg                |   Bin [31m0[m -> [32m145957[m bytes
+ assets/img/Homepage/Gallery/9.1.jpg                |   Bin [31m0[m -> [32m172292[m bytes
+ assets/img/Homepage/Logo/CEO_logo.png              |   Bin [31m0[m -> [32m54852[m bytes
+ assets/img/Homepage/Logo/Ceo_Ori.png               |   Bin [31m0[m -> [32m96325[m bytes
+ assets/img/Homepage/Logo/Ceo_Ori1.png              |   Bin [31m0[m -> [32m96325[m bytes
+ assets/img/Homepage/Logo/ECLogo.png                |   Bin [31m0[m -> [32m40587[m bytes
+ assets/img/Homepage/Logo/EC_Ori-01.png             |   Bin [31m0[m -> [32m24831[m bytes
+ assets/img/Homepage/Logo/EC_Ori_Fix.png            |   Bin [31m0[m -> [32m31226[m bytes
+ assets/img/Homepage/Logo/HIMATEKK.png              |   Bin [31m0[m -> [32m612183[m bytes
+ assets/img/Homepage/Logo/HsfcLogo.png              |   Bin [31m0[m -> [32m65413[m bytes
+ assets/img/Homepage/Logo/Upn.png                   |   Bin [31m0[m -> [32m555590[m bytes
+ assets/img/Homepage/Logo/ceo_2019-01.png           |   Bin [31m0[m -> [32m48414[m bytes
+ assets/img/Homepage/Logo/chemication.png           |   Bin [31m0[m -> [32m47679[m bytes
+ assets/img/Homepage/Logo/hsfc_Ori.png              |   Bin [31m0[m -> [32m78320[m bytes
+ assets/img/Homepage/Logo/logotekkim-01.png         |   Bin [31m0[m -> [32m993463[m bytes
+ assets/img/Homepage/UPN_depan.jpg                  |   Bin [31m0[m -> [32m68169[m bytes
+ assets/img/Homepage/about.jpg                      |   Bin [31m0[m -> [32m1817417[m bytes
+ assets/img/index.html                              |    11 [32m+[m
+ assets/img/supporters/Sponsor.jpg                  |   Bin [31m0[m -> [32m1140915[m bytes
+ assets/index.html                                  |    11 [32m+[m
+ assets/js/index.html                               |    11 [32m+[m
+ assets/js/main.js                                  |   147 [32m+[m
+ assets/lib/animate/animate.css                     |  1579 [32m+++[m
+ assets/lib/animate/animate.min.css                 |    11 [32m+[m
+ assets/lib/bootstrap/css/bootstrap.css             |  9023 [32m+++++++++++++[m
+ assets/lib/bootstrap/css/bootstrap.min.css         |     7 [32m+[m
+ assets/lib/bootstrap/js/bootstrap.bundle.min.js    |     7 [32m+[m
+ assets/lib/bootstrap/js/bootstrap.min.js           |     7 [32m+[m
+ assets/lib/easing/easing.js                        |   168 [32m+[m
+ assets/lib/easing/easing.min.js                    |     1 [32m+[m
+ assets/lib/font-awesome/css/font-awesome.css       |  2337 [32m++++[m
+ assets/lib/font-awesome/css/font-awesome.min.css   |     4 [32m+[m
+ assets/lib/font-awesome/fonts/FontAwesome.otf      |   Bin [31m0[m -> [32m134808[m bytes
+ .../lib/font-awesome/fonts/fontawesome-webfont.eot |   Bin [31m0[m -> [32m165742[m bytes
+ .../lib/font-awesome/fonts/fontawesome-webfont.svg |  2671 [32m++++[m
+ .../lib/font-awesome/fonts/fontawesome-webfont.ttf |   Bin [31m0[m -> [32m165548[m bytes
+ .../font-awesome/fonts/fontawesome-webfont.woff    |   Bin [31m0[m -> [32m98024[m bytes
+ .../font-awesome/fonts/fontawesome-webfont.woff2   |   Bin [31m0[m -> [32m77160[m bytes
+ assets/lib/index.html                              |    11 [32m+[m
+ assets/lib/jquery/jquery-migrate.min.js            |     2 [32m+[m
+ assets/lib/jquery/jquery.min.js                    |     4 [32m+[m
+ assets/lib/owlcarousel/LICENSE                     |    23 [32m+[m
+ assets/lib/owlcarousel/assets/ajax-loader.gif      |   Bin [31m0[m -> [32m3208[m bytes
+ assets/lib/owlcarousel/assets/owl.carousel.css     |   170 [32m+[m
+ assets/lib/owlcarousel/assets/owl.carousel.min.css |     6 [32m+[m
+ .../lib/owlcarousel/assets/owl.theme.default.css   |    50 [32m+[m
+ .../owlcarousel/assets/owl.theme.default.min.css   |     6 [32m+[m
+ assets/lib/owlcarousel/assets/owl.theme.green.css  |    50 [32m+[m
+ .../lib/owlcarousel/assets/owl.theme.green.min.css |     6 [32m+[m
+ assets/lib/owlcarousel/assets/owl.video.play.png   |   Bin [31m0[m -> [32m4976[m bytes
+ assets/lib/owlcarousel/owl.carousel.js             |  3275 [32m+++++[m
+ assets/lib/owlcarousel/owl.carousel.min.js         |     7 [32m+[m
+ assets/lib/superfish/hoverIntent.js                |   158 [32m+[m
+ assets/lib/superfish/superfish.js                  |   276 [32m+[m
+ assets/lib/superfish/superfish.min.js              |    10 [32m+[m
+ assets/lib/venobox/venobox.css                     |   229 [32m+[m
+ assets/lib/venobox/venobox.js                      |   763 [32m++[m
+ assets/lib/venobox/venobox.min.js                  |    12 [32m+[m
+ assets/lib/wow/wow.js                              |   542 [32m+[m
+ assets/lib/wow/wow.min.js                          |     3 [32m+[m
+ composer.json                                      |    23 [32m+[m
+ contributing.md                                    |    95 [32m+[m
+ index.php                                          |   315 [32m+[m
+ license.txt                                        |    21 [32m+[m
+ readme.rst                                         |    70 [32m+[m
+ system/.htaccess                                   |     6 [32m+[m
+ system/core/Benchmark.php                          |   133 [32m+[m
+ system/core/CodeIgniter.php                        |   559 [32m+[m
+ system/core/Common.php                             |   849 [32m++[m
+ system/core/Config.php                             |   379 [32m+[m
+ system/core/Controller.php                         |    96 [32m+[m
+ system/core/Exceptions.php                         |   274 [32m+[m
+ system/core/Hooks.php                              |   266 [32m+[m
+ system/core/Input.php                              |   895 [32m++[m
+ system/core/Lang.php                               |   203 [32m+[m
+ system/core/Loader.php                             |  1415 [32m++[m
+ system/core/Log.php                                |   296 [32m+[m
+ system/core/Model.php                              |    76 [32m+[m
+ system/core/Output.php                             |   842 [32m++[m
+ system/core/Router.php                             |   515 [32m+[m
+ system/core/Security.php                           |  1090 [32m++[m
+ system/core/URI.php                                |   643 [32m+[m
+ system/core/Utf8.php                               |   164 [32m+[m
+ system/core/compat/hash.php                        |   254 [32m+[m
+ system/core/compat/index.html                      |    11 [32m+[m
+ system/core/compat/mbstring.php                    |   149 [32m+[m
+ system/core/compat/password.php                    |   251 [32m+[m
+ system/core/compat/standard.php                    |   182 [32m+[m
+ system/core/index.html                             |    11 [32m+[m
+ system/database/DB.php                             |   218 [32m+[m
+ system/database/DB_cache.php                       |   221 [32m+[m
+ system/database/DB_driver.php                      |  1985 [32m+++[m
+ system/database/DB_forge.php                       |  1033 [32m++[m
+ system/database/DB_query_builder.php               |  2808 [32m++++[m
+ system/database/DB_result.php                      |   665 [32m+[m
+ system/database/DB_utility.php                     |   424 [32m+[m
+ system/database/drivers/cubrid/cubrid_driver.php   |   405 [32m+[m
+ system/database/drivers/cubrid/cubrid_forge.php    |   230 [32m+[m
+ system/database/drivers/cubrid/cubrid_result.php   |   177 [32m+[m
+ system/database/drivers/cubrid/cubrid_utility.php  |    79 [32m+[m
+ system/database/drivers/cubrid/index.html          |    11 [32m+[m
+ system/database/drivers/ibase/ibase_driver.php     |   413 [32m+[m
+ system/database/drivers/ibase/ibase_forge.php      |   251 [32m+[m
+ system/database/drivers/ibase/ibase_result.php     |   161 [32m+[m
+ system/database/drivers/ibase/ibase_utility.php    |    69 [32m+[m
+ system/database/drivers/ibase/index.html           |    11 [32m+[m
+ system/database/drivers/index.html                 |    11 [32m+[m
+ system/database/drivers/mssql/index.html           |    11 [32m+[m
+ system/database/drivers/mssql/mssql_driver.php     |   518 [32m+[m
+ system/database/drivers/mssql/mssql_forge.php      |   151 [32m+[m
+ system/database/drivers/mssql/mssql_result.php     |   198 [32m+[m
+ system/database/drivers/mssql/mssql_utility.php    |    77 [32m+[m
+ system/database/drivers/mysql/index.html           |    11 [32m+[m
+ system/database/drivers/mysql/mysql_driver.php     |   494 [32m+[m
+ system/database/drivers/mysql/mysql_forge.php      |   243 [32m+[m
+ system/database/drivers/mysql/mysql_result.php     |   199 [32m+[m
+ system/database/drivers/mysql/mysql_utility.php    |   211 [32m+[m
+ system/database/drivers/mysqli/index.html          |    11 [32m+[m
+ system/database/drivers/mysqli/mysqli_driver.php   |   546 [32m+[m
+ system/database/drivers/mysqli/mysqli_forge.php    |   244 [32m+[m
+ system/database/drivers/mysqli/mysqli_result.php   |   232 [32m+[m
+ system/database/drivers/mysqli/mysqli_utility.php  |   211 [32m+[m
+ system/database/drivers/oci8/index.html            |    11 [32m+[m
+ system/database/drivers/oci8/oci8_driver.php       |   701 [32m+[m
+ system/database/drivers/oci8/oci8_forge.php        |   187 [32m+[m
+ system/database/drivers/oci8/oci8_result.php       |   229 [32m+[m
+ system/database/drivers/oci8/oci8_utility.php      |    68 [32m+[m
+ system/database/drivers/odbc/index.html            |    11 [32m+[m
+ system/database/drivers/odbc/odbc_driver.php       |   425 [32m+[m
+ system/database/drivers/odbc/odbc_forge.php        |    86 [32m+[m
+ system/database/drivers/odbc/odbc_result.php       |   268 [32m+[m
+ system/database/drivers/odbc/odbc_utility.php      |    63 [32m+[m
+ system/database/drivers/pdo/index.html             |    11 [32m+[m
+ system/database/drivers/pdo/pdo_driver.php         |   329 [32m+[m
+ system/database/drivers/pdo/pdo_forge.php          |    65 [32m+[m
+ system/database/drivers/pdo/pdo_result.php         |   198 [32m+[m
+ system/database/drivers/pdo/pdo_utility.php        |    63 [32m+[m
+ system/database/drivers/pdo/subdrivers/index.html  |    11 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_4d_driver.php       |   200 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_4d_forge.php        |   217 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_cubrid_driver.php   |   209 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_cubrid_forge.php    |   230 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_dblib_driver.php    |   353 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_dblib_forge.php     |   149 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_firebird_driver.php |   279 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_firebird_forge.php  |   237 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_ibm_driver.php      |   244 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_ibm_forge.php       |   154 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_informix_driver.php |   309 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_informix_forge.php  |   163 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_mysql_driver.php    |   379 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_mysql_forge.php     |   256 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_oci_driver.php      |   326 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_oci_forge.php       |   176 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_odbc_driver.php     |   229 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_odbc_forge.php      |    70 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_pgsql_driver.php    |   384 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_pgsql_forge.php     |   210 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_sqlite_driver.php   |   213 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_sqlite_forge.php    |   238 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_sqlsrv_driver.php   |   369 [32m+[m
+ .../drivers/pdo/subdrivers/pdo_sqlsrv_forge.php    |   149 [32m+[m
+ system/database/drivers/postgre/index.html         |    11 [32m+[m
+ system/database/drivers/postgre/postgre_driver.php |   619 [32m+[m
+ system/database/drivers/postgre/postgre_forge.php  |   205 [32m+[m
+ system/database/drivers/postgre/postgre_result.php |   182 [32m+[m
+ .../database/drivers/postgre/postgre_utility.php   |    78 [32m+[m
+ system/database/drivers/sqlite/index.html          |    11 [32m+[m
+ system/database/drivers/sqlite/sqlite_driver.php   |   330 [32m+[m
+ system/database/drivers/sqlite/sqlite_forge.php    |   205 [32m+[m
+ system/database/drivers/sqlite/sqlite_result.php   |   164 [32m+[m
+ system/database/drivers/sqlite/sqlite_utility.php  |    61 [32m+[m
+ system/database/drivers/sqlite3/index.html         |    11 [32m+[m
+ system/database/drivers/sqlite3/sqlite3_driver.php |   344 [32m+[m
+ system/database/drivers/sqlite3/sqlite3_forge.php  |   225 [32m+[m
+ system/database/drivers/sqlite3/sqlite3_result.php |   194 [32m+[m
+ .../database/drivers/sqlite3/sqlite3_utility.php   |    61 [32m+[m
+ system/database/drivers/sqlsrv/index.html          |    11 [32m+[m
+ system/database/drivers/sqlsrv/sqlsrv_driver.php   |   543 [32m+[m
+ system/database/drivers/sqlsrv/sqlsrv_forge.php    |   149 [32m+[m
+ system/database/drivers/sqlsrv/sqlsrv_result.php   |   193 [32m+[m
+ system/database/drivers/sqlsrv/sqlsrv_utility.php  |    77 [32m+[m
+ system/database/index.html                         |    11 [32m+[m
+ system/fonts/index.html                            |    11 [32m+[m
+ system/fonts/texb.ttf                              |   Bin [31m0[m -> [32m143830[m bytes
+ system/helpers/array_helper.php                    |   115 [32m+[m
+ system/helpers/captcha_helper.php                  |   341 [32m+[m
+ system/helpers/cookie_helper.php                   |   113 [32m+[m
+ system/helpers/date_helper.php                     |   742 [32m++[m
+ system/helpers/directory_helper.php                |   101 [32m+[m
+ system/helpers/download_helper.php                 |   158 [32m+[m
+ system/helpers/email_helper.php                    |    84 [32m+[m
+ system/helpers/file_helper.php                     |   453 [32m+[m
+ system/helpers/form_helper.php                     |  1055 [32m++[m
+ system/helpers/html_helper.php                     |   410 [32m+[m
+ system/helpers/index.html                          |    11 [32m+[m
+ system/helpers/inflector_helper.php                |   287 [32m+[m
+ system/helpers/language_helper.php                 |    75 [32m+[m
+ system/helpers/number_helper.php                   |    94 [32m+[m
+ system/helpers/path_helper.php                     |    82 [32m+[m
+ system/helpers/security_helper.php                 |   137 [32m+[m
+ system/helpers/smiley_helper.php                   |   255 [32m+[m
+ system/helpers/string_helper.php                   |   304 [32m+[m
+ system/helpers/text_helper.php                     |   567 [32m+[m
+ system/helpers/typography_helper.php               |   104 [32m+[m
+ system/helpers/url_helper.php                      |   569 [32m+[m
+ system/helpers/xml_helper.php                      |    90 [32m+[m
+ system/index.html                                  |    11 [32m+[m
+ system/language/english/calendar_lang.php          |    84 [32m+[m
+ system/language/english/date_lang.php              |    94 [32m+[m
+ system/language/english/db_lang.php                |    63 [32m+[m
+ system/language/english/email_lang.php             |    58 [32m+[m
+ system/language/english/form_validation_lang.php   |    69 [32m+[m
+ system/language/english/ftp_lang.php               |    51 [32m+[m
+ system/language/english/imglib_lang.php            |    57 [32m+[m
+ system/language/english/index.html                 |    11 [32m+[m
+ system/language/english/migration_lang.php         |    47 [32m+[m
+ system/language/english/number_lang.php            |    44 [32m+[m
+ system/language/english/pagination_lang.php        |    43 [32m+[m
+ system/language/english/profiler_lang.php          |    60 [32m+[m
+ system/language/english/unit_test_lang.php         |    58 [32m+[m
+ system/language/english/upload_lang.php            |    55 [32m+[m
+ system/language/index.html                         |    11 [32m+[m
+ system/libraries/Cache/Cache.php                   |   255 [32m+[m
+ system/libraries/Cache/drivers/Cache_apc.php       |   217 [32m+[m
+ system/libraries/Cache/drivers/Cache_dummy.php     |   172 [32m+[m
+ system/libraries/Cache/drivers/Cache_file.php      |   286 [32m+[m
+ system/libraries/Cache/drivers/Cache_memcached.php |   313 [32m+[m
+ system/libraries/Cache/drivers/Cache_redis.php     |   328 [32m+[m
+ system/libraries/Cache/drivers/Cache_wincache.php  |   217 [32m+[m
+ system/libraries/Cache/drivers/index.html          |    11 [32m+[m
+ system/libraries/Cache/index.html                  |    11 [32m+[m
+ system/libraries/Calendar.php                      |   546 [32m+[m
+ system/libraries/Cart.php                          |   567 [32m+[m
+ system/libraries/Driver.php                        |   342 [32m+[m
+ system/libraries/Email.php                         |  2490 [32m++++[m
+ system/libraries/Encrypt.php                       |   521 [32m+[m
+ system/libraries/Encryption.php                    |   941 [32m++[m
+ system/libraries/Form_validation.php               |  1591 [32m+++[m
+ system/libraries/Ftp.php                           |   667 [32m+[m
+ system/libraries/Image_lib.php                     |  1842 [32m+++[m
+ system/libraries/Javascript.php                    |   856 [32m++[m
+ system/libraries/Javascript/Jquery.php             |  1076 [32m++[m
+ system/libraries/Javascript/index.html             |    11 [32m+[m
+ system/libraries/Migration.php                     |   477 [32m+[m
+ system/libraries/Pagination.php                    |   704 [32m+[m
+ system/libraries/Parser.php                        |   248 [32m+[m
+ system/libraries/Profiler.php                      |   574 [32m+[m
+ system/libraries/Session/Session.php               |   983 [32m++[m
+ .../libraries/Session/SessionHandlerInterface.php  |    59 [32m+[m
+ system/libraries/Session/Session_driver.php        |   208 [32m+[m
+ .../Session/drivers/Session_database_driver.php    |   446 [32m+[m
+ .../Session/drivers/Session_files_driver.php       |   426 [32m+[m
+ .../Session/drivers/Session_memcached_driver.php   |   397 [32m+[m
+ .../Session/drivers/Session_redis_driver.php       |   417 [32m+[m
+ system/libraries/Session/drivers/index.html        |    11 [32m+[m
+ system/libraries/Session/index.html                |    11 [32m+[m
+ system/libraries/Table.php                         |   538 [32m+[m
+ system/libraries/Trackback.php                     |   556 [32m+[m
+ system/libraries/Typography.php                    |   424 [32m+[m
+ system/libraries/Unit_test.php                     |   406 [32m+[m
+ system/libraries/Upload.php                        |  1326 [32m++[m
+ system/libraries/User_agent.php                    |   681 [32m+[m
+ system/libraries/Xmlrpc.php                        |  1920 [32m+++[m
+ system/libraries/Xmlrpcs.php                       |   619 [32m+[m
+ system/libraries/Zip.php                           |   532 [32m+[m
+ system/libraries/index.html                        |    11 [32m+[m
+ .../CEO/PasFoto/CEO0001Ketua_CEO5cfe0e64ca4ac.jpg  |   Bin [31m0[m -> [32m5834[m bytes
+ .../CEO/PasFoto/CEO0003Ketua_CEO5cfe11013bd28.jpg  |   Bin [31m0[m -> [32m5834[m bytes
+ .../CEO/PasFoto/CEO0003Ketua_CEO5cfe11174b48e.jpg  |   Bin [31m0[m -> [32m5834[m bytes
+ .../CEO/PasFoto/CEO0003anggota15d170c3cc4250.jpg   |   Bin [31m0[m -> [32m45693[m bytes
+ .../PasFoto/CEO0003anggota1_CEO5cfe114caf777.jpg   |   Bin [31m0[m -> [32m5834[m bytes
+ .../PasFoto/CEO0003anggota2_CEO5cfe11877cd91.jpg   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/CEO/PasFoto/CEO0003ketua5d15d86f21783.jpg |   Bin [31m0[m -> [32m10321[m bytes
+ .../CEO/PasFoto/CEO0005Ketua_CEO5cfe1a150da15.jpg  |   Bin [31m0[m -> [32m5834[m bytes
+ .../PasFoto/CEO0005anggota1_CEO5cfe1a4729b69.jpg   |   Bin [31m0[m -> [32m5834[m bytes
+ .../PasFoto/CEO0005anggota2_CEO5cfe1a77e8973.jpg   |   Bin [31m0[m -> [32m5834[m bytes
+ .../CEO/PasFoto/EC0001anggota15d1877d170733.png    |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/CEO/PasFoto/EC0001ketua5d1877d158c99.png  |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/CEO/PasFoto/index.html                    |    11 [32m+[m
+ .../Pembayaran/CEO0003bukti_CEO5cfe119de47e7.jpg   |   Bin [31m0[m -> [32m45669[m bytes
+ .../Pembayaran/CEO0005bukti_CEO5cfe1a8818908.jpg   |   Bin [31m0[m -> [32m45669[m bytes
+ uploaded/CEO/Pembayaran/index.html                 |    11 [32m+[m
+ .../CEO/Scan/CEO0001Ketua_CEO5cfe0e64caa80.jpg     |   Bin [31m0[m -> [32m88377[m bytes
+ .../CEO/Scan/CEO0003Ketua_CEO5cfe11013c3f6.jpg     |   Bin [31m0[m -> [32m5834[m bytes
+ .../CEO/Scan/CEO0003Ketua_CEO5cfe11174b770.jpg     |   Bin [31m0[m -> [32m88377[m bytes
+ .../CEO/Scan/CEO0003anggota1_CEO5cfe114cafe90.jpg  |   Bin [31m0[m -> [32m88377[m bytes
+ .../CEO/Scan/CEO0003anggota2_CEO5cfe11877d3d0.jpg  |   Bin [31m0[m -> [32m88377[m bytes
+ .../CEO/Scan/CEO0005Ketua_CEO5cfe1a150ed26.jpg     |   Bin [31m0[m -> [32m88377[m bytes
+ .../CEO/Scan/CEO0005anggota1_CEO5cfe1a4729dd3.jpg  |   Bin [31m0[m -> [32m88377[m bytes
+ .../CEO/Scan/CEO0005anggota2_CEO5cfe1a77e8f89.jpg  |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/CEO/Scan/CEO0009Ketua_CEO.png             |   Bin [31m0[m -> [32m18656[m bytes
+ uploaded/CEO/Scan/EC0001anggota15d1877d172379.png  |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/CEO/Scan/EC0001ketua5d1877d16e98f.png     |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/CEO/Scan/index.html                       |    11 [32m+[m
+ uploaded/CEO/index.html                            |    11 [32m+[m
+ uploaded/EC/Foto/EC0001anggota1.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0001anggota15d1878bb01f69.png   |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/EC/Foto/EC0001ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0001ketua5d1878a9ce319.png      |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/EC/Foto/EC0003anggota1.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0003anggota2.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0003ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0004anggota1.jpg                |   Bin [31m0[m -> [32m52400[m bytes
+ uploaded/EC/Foto/EC0004ketua.jpg                   |   Bin [31m0[m -> [32m52400[m bytes
+ uploaded/EC/Foto/EC0005anggota1.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0005ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0007anggota1.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0007ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0009anggota1.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0009ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0011anggota1.jpg                |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/EC0011ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Foto/index.html                        |    11 [32m+[m
+ uploaded/EC/Scan/EC0001anggota1.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0001anggota15d1878bb04645.png   |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/EC/Scan/EC0001ketua.jpg                   |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0001ketua5d1878a9d30ef.png      |   Bin [31m0[m -> [32m61018[m bytes
+ uploaded/EC/Scan/EC0003anggota1.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0003anggota2.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0003ketua.jpg                   |   Bin [31m0[m -> [32m5834[m bytes
+ uploaded/EC/Scan/EC0004anggota1.jpg                |   Bin [31m0[m -> [32m65809[m bytes
+ uploaded/EC/Scan/EC0004ketua.jpg                   |   Bin [31m0[m -> [32m52400[m bytes
+ uploaded/EC/Scan/EC0005anggota1.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0005ketua.jpg                   |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0007anggota1.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0007ketua.jpg                   |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0009anggota1.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0009ketua.jpg                   |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0011anggota1.jpg                |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/EC0011ketua.jpg                   |   Bin [31m0[m -> [32m88377[m bytes
+ uploaded/EC/Scan/index.html                        |    11 [32m+[m
+ uploaded/EC/index.html                             |    11 [32m+[m
+ uploaded/GuideBook/FORMULIR_HSFC_2019.docx         |   Bin [31m0[m -> [32m5999409[m bytes
+ uploaded/GuideBook/GUIDE_BOOK_CEO_2019.pdf         |   Bin [31m0[m -> [32m715828[m bytes
+ uploaded/GuideBook/GUIDE_BOOK_EC_2019.pdf          |   Bin [31m0[m -> [32m989403[m bytes
+ uploaded/GuideBook/index.html                      |    11 [32m+[m
+ uploaded/index.html                                |    11 [32m+[m
+ 616 files changed, 200224 insertions(+)
