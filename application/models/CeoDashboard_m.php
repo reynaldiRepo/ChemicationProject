@@ -19,6 +19,12 @@ class CeoDashboard_m extends CI_Model{
         }
     }
 
+    
+    public function get_news(){
+        $this->db->order_by('id','DESC');
+        return $this->db->get('dashboard_ceo_news')->result();
+    }
+    
     public function getData(){
         $tim = array(
             'email'=>$this->input->post('email_ceo'),
@@ -295,25 +301,56 @@ class CeoDashboard_m extends CI_Model{
         }
     }
 
-    public function hitung_nilai($id, $id_ujian){
+     public function hitung_nilai($id, $id_ujian, $kode_soal){
         $nilai = 0;
-        $jawaban_user = $this->db->get_where('soal_dikerjakan', array('Tim_id'=>$id, 'id_ujian'=>$id_ujian));
+        $jawaban_user = $this->db->get_where('soal_dikerjakan', array('Tim_id'=>$id, 'id_ujian'=>$id_ujian, 'kode_soal'=>$kode_soal));
         if ($jawaban_user->num_rows() == 0){
             $nilai = 0;
             return $nilai;
         }else{
             $jawaban_user = $jawaban_user->result();
-            $kunci_jawaban = $this->db->get_where('soal_ujian',array('id_ujian'=>$id_ujian))->result();
+            $kunci_jawaban = $this->db->get_where('soal_ujian',array('id_ujian'=>$id_ujian, 'kode_soal'=>$kode_soal))->result();
             foreach($kunci_jawaban as $kunci){
                 $kunci_arr[$kunci->no_soal] = array($kunci->kunci_jawaban,(int)$kunci->bobot);
             }
             foreach($jawaban_user as $j){
                 if($kunci_arr[$j->no_soal][0] == $j->jawaban){
                     $nilai += $kunci_arr[$j->no_soal][1];
+                }else{
+                    $nilai -= 1;
                 }
             }
         return $nilai;
         }
+    }
+
+    public function validate_date($now, $date_val){
+        if ($date_val == $now){
+            return "sekarang";
+        }else{
+            $date_val = explode("-", $date_val);
+            $now = explode("-", $now);
+            if ($date_val[2] > $now[2]){
+                return "belum";
+            }elseif($date_val[2] < $now[2]){
+                return "sudah";
+            }elseif($date_val[2] == $now[2]){
+                if($date_val[1] > $now[1]){
+                    return "belum";
+                }elseif($date_val[1] < $now[1]){
+                    return "sudah";
+                }elseif($date_val[1] == $now[1]){
+                    if($date_val[0] > $now[0]){
+                        return "belum";
+                    }elseif($date_val[0] < $now[0]){
+                        return "sudah";
+                    }elseif($date_val[0] == $now[0]){
+                        return "sekarang";
+                    }
+                }
+            }
+        }
+        
     }
 
     public function dashboardCBT($id){
@@ -321,8 +358,8 @@ class CeoDashboard_m extends CI_Model{
         date_default_timezone_set("Asia/Bangkok");
         // for tryout
         $sql_TO ="select *
-                FROM tryout, ujian_online, Sesi
-                WHERE tryout.id_ujian = ujian_online.id_ujian AND Sesi.id_sesi = tryout.Sesi";
+                FROM tryout, ujian_online, sesi
+                WHERE tryout.id_ujian = ujian_online.id_ujian AND sesi.id_sesi = tryout.Sesi and tryout.Tim_id = '".$id."'";
         
         $this->db->where(array('Tim_id'=>$id));
         $tryout = $this->db->query($sql_TO);
@@ -337,10 +374,13 @@ class CeoDashboard_m extends CI_Model{
                 $jam_selesai = $to->jam_selesai;
                 $dikerjakan = $to->dikerjakan;
                 $nilai = $to->nilai;
+                $kode_soal = $to->kode_soal;
+                $data['kode_to'] = $kode_soal;
             }
             if($dikerjakan == 'no'){
             // datevalidate
             $date_now = date("d-m-Y");
+            $validate_date = $this->validate_date($date_now, $tanggal_ujian);
             if ($date_now == $tanggal_ujian){    
                 $time = date("H.i");
                 if($time > $jam_mulai && $time < $jam_selesai){
@@ -351,18 +391,18 @@ class CeoDashboard_m extends CI_Model{
                     $data['tryout'] = 'belum_ada_test';
                 }elseif($time > $jam_selesai){
                     //jam lewat terdaftar ujian
-                    $nilai = $this->hitung_nilai($id, '1');
+                    $nilai = $this->hitung_nilai($id, '1', $kode_soal);
                     $this->db->where(array('Tim_id'=>$id));
                     $this->db->update('tryout',array('dikerjakan'=>'ya', 'nilai'=>$nilai));
                     $data['tryout'] = 'sudah_dikerjakan';
                     $data['nilai_to'] = $nilai;
                 }
-            }elseif($date_now < $tanggal_ujian){
+            }elseif($validate_date == "belum"){
                 //belum masuk tanggal ujian
                 $data['tryout'] = 'belum_ada_test';
-            }elseif($date_now > $tanggal_ujian){
+            }elseif($validate_date == "sudah"){
                 //tanggal lewat terdaftar ujian
-                $nilai = $this->hitung_nilai($id, '1');
+                $nilai = $this->hitung_nilai($id, '1', $kode_soal);
                 $this->db->where(array('Tim_id'=>$id));
                 $this->db->update('tryout',array('dikerjakan'=>'ya', 'nilai'=>$nilai));
                 $data['tryout'] = 'sudah_dikerjakan';
@@ -375,11 +415,14 @@ class CeoDashboard_m extends CI_Model{
                 $data['nilai_to'] = $nilai;
             }
         }
+        // $data['jam_selesai'] = $jam_selesai;
+        // $data['jam_mulai'] = $jam_mulai;
+        $data['id_tim'] = $id;
 
         // for penyisihan
         $sql_TO ="select *
-                FROM penyisihan, ujian_online, Sesi
-                WHERE penyisihan.id_ujian = ujian_online.id_ujian AND Sesi.id_sesi = penyisihan.Sesi";
+                FROM penyisihan, ujian_online, sesi
+                WHERE penyisihan.id_ujian = ujian_online.id_ujian AND sesi.id_sesi = penyisihan.sesi and penyisihan.Tim_id = '".$id."'";
         
         $this->db->where(array('Tim_id'=>$id));
         $penyisihan = $this->db->query($sql_TO);
@@ -394,10 +437,12 @@ class CeoDashboard_m extends CI_Model{
                 $jam_selesai = $to->jam_selesai;
                 $dikerjakan = $to->dikerjakan;
                 $nilai = $to->nilai;
+                $kode_soalpe = $to->kode_soal;
             }
             if($dikerjakan == 'no'){
             // datevalidate
             $date_now = date("d-m-Y");
+            $validate_date = $this->validate_date($date_now, $tanggal_ujian);
             if ($date_now == $tanggal_ujian){    
                 $time = date("H.i");
                 if($time > $jam_mulai && $time < $jam_selesai){
@@ -408,18 +453,18 @@ class CeoDashboard_m extends CI_Model{
                     $data['penyisihan'] = 'belum_ada_test';
                 }elseif($time > $jam_selesai){
                     //jam lewat terdaftar ujian
-                    $nilai = $this->hitung_nilai($id, '1');
+                    $nilai = $this->hitung_nilai($id, '2', $kode_soalpe);
                     $this->db->where(array('Tim_id'=>$id));
-                    $this->db->update('penyisihan',array('dikerjakan'=>'ya', 'nilai'=>$nilai));
+                    $this->db->update('penyisihan',array('dikearjakan'=>'ya', 'nilai'=>$nilai));
                     $data['penyisihan'] = 'sudah_dikerjakan';
                     $data['nilai_pe'] = $nilai;
                 }
-            }elseif($date_now < $tanggal_ujian){
+            }elseif($validate_date == "belum"){
                 //belum masuk tanggal ujian
                 $data['penyisihan'] = 'belum_ada_test';
-            }elseif($date_now > $tanggal_ujian){
+            }elseif($validate_date == "sudah"){
                 //tanggal lewat terdaftar ujian
-                $nilai = $this->hitung_nilai($id, '1');
+                $nilai = $this->hitung_nilai($id, '2', $kode_soalpe);
                 $this->db->where(array('Tim_id'=>$id));
                 $this->db->update('penyisihan',array('dikerjakan'=>'ya', 'nilai'=>$nilai));
                 $data['penyisihan'] = 'sudah_dikerjakan';
@@ -432,7 +477,7 @@ class CeoDashboard_m extends CI_Model{
                 $data['nilai_pe'] = $nilai;
             }
         }
+        $data['Kode_PE'] = $kode_soalpe;
         return $data;
     }
-    
 }

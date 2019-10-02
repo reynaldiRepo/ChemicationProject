@@ -131,6 +131,24 @@
 
         </section>
 
+        <section id="faq" class="wow fadeInUp">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Selamat Bagi Yang Lolos Grand Final</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <img src="<?php echo base_url('uploaded/GuideBook/ecFinal.jpeg')?>" style="width : 100%;">
+                        <br><br><h5 class="sub-heading">Untuk ketentuan lebih lanjut bisa download guide book 
+                        <a href="">disini</a></h5>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </section>
+
 
         <!-- Faq -->
 

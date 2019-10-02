@@ -201,7 +201,7 @@
                         </div>
                         <?php 
                         $id = $this->session->userdata('id');
-                        $location = 'localhost/cbt.nationalchemication.com/CBT/home/'.$id.'/1';
+                        $location = 'localhost/cbt.nationalchemication.com/CBT/home/'.$id.'/1/A';
                         if ($tryout == 'belum_dikerjakan') {?>
                         <p>Click Tombol Dibawah Untuk Memulai Test, "Selamat Mengerjakan"</p>
                         <br>
@@ -226,7 +226,7 @@
                         </div>
                         <?php 
                         $id = $this->session->userdata('id');
-                        $location = 'localhost/cbt.nationalchemication.com/CBT/home/'.$id.'/2';
+                        $location = 'localhost/cbt.nationalchemication.com/CBT/home/'.$id.'/2/'.$Kode_PE;
                         if ($penyisihan == 'belum_dikerjakan') {?>
                         <p>Click Tombol Dibawah Untuk Memulai Test, "Selamat Mengerjakan"</p>
                         <br>

@@ -90,6 +90,24 @@
       </div>
     </section>
 
+    <section id="faq" class="wow fadeInUp">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Teaser</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        <center>
+                        <video width="80%" height="440px" controls>
+                          <source src=" <?php echo base_url("Uploaded/Vid/teaser.mp4")?> " type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     <!--==========================
       CompetitionList Section
     ============================-->
